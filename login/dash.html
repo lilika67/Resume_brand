@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./dash.css"/>
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <title>Dashboard</title>
+  </head>
+
+  <body>
+    <section class="header">
+      <div class="logo">
+        <i class="ri-menu-line icon icon-0 menu"></i>
+        <h1>MY<span>BRAND</span></h1>
+      </div>
+    </section>
+    <section class="main">
+      <div class="sidebar">
+        <ul class="sidebar--items">
+          <li>
+            <a href="#" id="active--link">
+              <span class="icon icon-1"
+                ><i class="ri-layout-grid-line"></i
+              ></span>
+              <span class="sidebar--item">Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="icon icon-2"><i class="ri-line-chart-line"></i></span>
+              <span class="sidebar--item">Edit Portfolio</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="">
+              <span class="icon icon-3"><i class="ri-line-chart-line"></i></span>
+              <span class="sidebar--item">Add Skills</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <span class="icon icon-4"><i class="ri-line-chart-line"></i></span>
+              <span class="sidebar--item">User messages</span>
+            </a>
+          </li>
+          <li>
+            <a href="./addblog.html">
+              <span class="icon icon-4"><i class="ri-line-chart-line"></i></span>
+              <span class="sidebar--item">Add Blog</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <span class="icon icon-5"><i class="ri-line-chart-line"></i></span>
+              <span class="sidebar--item">Blogs</span>
+            </a>
+          </li>
+        </ul>
+        <ul class="sidebar--bottom-items">
+          <li>
+                    <a href="#">
+                        <span class="icon icon-7"><i class="ri-settings-3-line"></i></span>
+                        <span class="sidebar--item">Setting</span>
+                    </a>
+                </li>
+          <li>
+            <a href="login.html">
+              <span class="icon icon-5"
+                ><i class="ri-logout-box-r-line"></i
+              ></span>
+              <span class="sidebar--item">Logout</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="main--content">
+        <!-- Start Overview -->
+        <div class="overview">
+          <div class="title">
+            <h2 class="section--title">Overview</h2>
+          </div>
+          <div class="cards">
+            <div class="card card-1">
+              <div class="card--data">
+                <div class="card--content">
+                  <h5 class="card--title">Comments</h5>
+                </div>
+              </div>
+            </div>
+            <div class="card card-2">
+              <div class="card--data">
+                <div class="card--content">
+                  <h5 class="card--title">Total Blogs</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Overview -->
+        <!-- Start Blog  -->
+        <div class="recent--blogs">
+          <div class="title">
+            <h2 class="section--title">Blogs</h2>
+            <button class="add"><i class="ri-add-line"></i>Add Blog</button>
+          </div>
+          <div class="table">
+            <table>
+              <thead>
+                <tr>
+                  <th class="hidden">id</th>
+                  <th>Tittle</th>
+                  <th>Comments</th>
+                  <th>Date</th>
+                  <th>Likes</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                        <td class="hidden"></td>
+                        <td>The Importance of learning online</td>
+                        <td>Good work</td>
+                        <td>30/07/2022</td>
+                        <td>12</td>
+                        <td><span><i class="ri-edit-line edit"></i><i class="ri-delete-bin-line delete"></i></span></td>
+                    </tr>                     
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- End Blog  -->
+      </div>
+    </section>
+    <script src=""></script>
+  </body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="login.css">
+</head>
+<body>
+
+<h2 class="log-text"> Login Form</h2>
+<a  href="../index.html"><img src="../images/back.png"></a>
+
+<!-- <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button> -->
+
+<div id="log" class="modal">
+  
+  <form class="modal-content animate"  method="post">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('log').style.display='none'" class="close" title="Close Modal">&times;</span>
+      <img src="../images/avatar.png" alt="Avatar" class="avatar">
+    </div>
+
+    <div class="container">
+      <button>Login With Google</button>
+      <p>OR</p>
+      <label for="uname"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="uname" required>
+
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" required>
+        
+      <button type="submit">Login</button>
+    
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+       <span class="sign">You do not have account <a href="./signup.html">SignUp</a></span>
+    
+  </form>
+</div>
+
+<script>
+
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+
+</body>
+</html>
+
