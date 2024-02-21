@@ -11,23 +11,56 @@ const dateInput = document.getElementById("date-input");
 const descriptionInput = document.getElementById("description-input");
 const imageInput = document.getElementById("image-input");
 
-const taskData = [];
+let taskData = [];
 let currentTask = {};
+
 const reset = () => {
   titleInput.value = "";
   dateInput.value = "";
   descriptionInput.value = "";
   imageInput.value = "";
-  taskForm.classList.toggle("hidden");
+  taskForm.classList.add("hidden");
   currentTask = {};
-}
+};
 
-openTaskFormBtn.addEventListener("click", () =>
-  taskForm.classList.toggle("hidden")
-);
+const renderTasks = () => {
+  tasksContainer.innerHTML = "";
+  taskData.forEach(({ id, title, date, description }) => {
+    tasksContainer.innerHTML += `
+      <div class="blog" id="${id}">
+        <p><strong>Title:</strong> ${title}</p>
+        <p><strong>Date:</strong> ${date}</p>
+        <p><strong>Description:</strong> ${description}</p>
+        <button type="button" class="edit-btn" data-id="${id}">Edit</button>
+        <button type="button" class="delete-btn" data-id="${id}">Delete</button>
+      </div>
+    `;
+  });
+};
+
+const editTask = (id) => {
+  const taskToEdit = taskData.find((task) => task.id === id);
+  if (taskToEdit) {
+    titleInput.value = taskToEdit.title;
+    dateInput.value = taskToEdit.date;
+    descriptionInput.value = taskToEdit.description;
+    currentTask = taskToEdit;
+    taskForm.classList.remove("hidden");
+  }
+};
+
+const deleteTask = (id) => {
+  taskData = taskData.filter((task) => task.id !== id);
+  renderTasks();
+};
+
+openTaskFormBtn.addEventListener("click", () => {
+  taskForm.classList.remove("hidden");
+});
 
 closeTaskFormBtn.addEventListener("click", () => {
-  const formInputsContainValues = titleInput.value || dateInput.value || descriptionInput.value || imageInput.value;
+  const formInputsContainValues =
+    titleInput.value || dateInput.value || descriptionInput.value || imageInput.value;
 
   if (formInputsContainValues) {
     confirmCloseDialog.showModal();
@@ -40,7 +73,17 @@ cancelBtn.addEventListener("click", () => confirmCloseDialog.close());
 
 discardBtn.addEventListener("click", () => {
   confirmCloseDialog.close();
-  reset()
+  reset();
+});
+
+tasksContainer.addEventListener("click", (e) => {
+  if (e.target.classList.contains("edit-btn")) {
+    const taskId = e.target.getAttribute("data-id");
+    editTask(taskId);
+  } else if (e.target.classList.contains("delete-btn")) {
+    const taskId = e.target.getAttribute("data-id");
+    deleteTask(taskId);
+  }
 });
 
 taskForm.addEventListener("submit", (e) => {
@@ -48,30 +91,21 @@ taskForm.addEventListener("submit", (e) => {
 
   const dataArrIndex = taskData.findIndex((item) => item.id === currentTask.id);
   const taskObj = {
-    id: `${titleInput.value.toLowerCase().split(" ").join("-")}-${Date.now()}`,
+    id: currentTask.id || `${titleInput.value.toLowerCase().split(" ").join("-")}-${Date.now()}`,
     title: titleInput.value,
     date: dateInput.value,
     description: descriptionInput.value,
     image: imageInput.files[0] ? URL.createObjectURL(imageInput.files[0]) : null,
   };
 
-   if (dataArrIndex === -1) {
+  if (dataArrIndex === -1) {
     taskData.unshift(taskObj);
+  } else {
+    taskData[dataArrIndex] = taskObj;
   }
 
- taskData.forEach(
-    ({ id, title, date, description }) => {
-        (tasksContainer.innerHTML += `
-        <div class="blog" id="${id}">
-          <p><strong>Title:</strong> ${title}</p>
-          <p><strong>Date:</strong> ${date}</p>
-          <p><strong>Description:</strong> ${description}</p>
-          <button type="button" class="btn">Edit</button>
-          <button type="button" class="btn">Delete</button>
-        </div>
-      `)
-    }
-  );
-
-  reset()
+  renderTasks();
+  reset();
 });
+
+renderTasks();

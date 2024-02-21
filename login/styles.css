@@ -588,7 +588,7 @@ input[type="file" i] {
 }
 
 /* Button styles */
-.btn {
+.edit-btn, .delete-btn {
   padding: 8px 16px;
   font-size: 16px;
   cursor: pointer;
